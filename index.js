@@ -1,22 +1,34 @@
 function hasTargetSum(array, target) {
   // Write your algorithm here
 
-  for(i = 0; i < array.length; i++) {
-    const compNum = target - array[i]
-    for(j = i + 1; j < array.length; j++) {
-      if(array[j] === compNum) {
-        return true
-      }
-    }
+//   for(i = 0; i < array.length; i++) {
+//     const compNum = target - array[i]
+//     for(j = i + 1; j < array.length; j++) {
+//       if(array[j] === compNum) {
+//         return true
+//       }
+//     }
+//   }
+//   return false
+// }
+
+  const seenNumbers = {};
+  for (const number of array) {
+    const complement = target - number;
+    if (seenNumbers[complement]) return true;
+    seenNumbers[number] = true;
   }
-  return false
+  return false;
 }
 
 /* 
   Write the Big O time complexity of your function here
-  
-  Quadradic Runtime
+
+  First code: Quadradic Runtime
   O(n^2)
+
+  Second Code: Linear Runtime
+  O(n)
 
 */
 
